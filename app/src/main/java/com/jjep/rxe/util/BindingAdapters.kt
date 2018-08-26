@@ -6,8 +6,24 @@ import android.databinding.BindingAdapter
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.RecyclerView
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import com.jjep.rxe.util.extension.getParentActivity
+import com.squareup.picasso.Picasso
+
+@BindingAdapter("mutableImage")
+fun setMutableIage(view: ImageView, path: String?) {
+    val parent: AppCompatActivity? = view.getParentActivity()
+
+    if (parent != null) {
+        Picasso.get()
+            .load(path)
+            .noPlaceholder()
+            .centerCrop()
+            .fit()
+            .into(view)
+    }
+}
 
 @BindingAdapter("mutableVisibility")
 fun setMutableVisibility(view: View, visibility: MutableLiveData<Int>?) {

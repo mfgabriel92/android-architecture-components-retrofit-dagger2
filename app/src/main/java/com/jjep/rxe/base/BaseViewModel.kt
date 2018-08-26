@@ -12,13 +12,13 @@ abstract class BaseViewModel : ViewModel() {
         .networkModule(NetworkModule)
         .build()
 
-    init {
-        inject()
-    }
+init {
+    inject()
+}
 
-    private fun inject() {
-        when (this) {
-            is PostListViewModel -> injector.inject(this)
-        }
+private fun inject() {
+    when (this) {
+        is PostListViewModel -> injector.inject(this)
     }
+}
 }

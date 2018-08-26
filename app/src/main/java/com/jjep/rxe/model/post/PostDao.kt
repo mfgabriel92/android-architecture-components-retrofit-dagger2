@@ -1,4 +1,4 @@
-package com.jjep.rxe.model
+package com.jjep.rxe.model.post
 
 import android.arch.persistence.room.Dao
 import android.arch.persistence.room.Insert

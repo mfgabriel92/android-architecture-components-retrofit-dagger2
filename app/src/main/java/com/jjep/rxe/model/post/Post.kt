@@ -1,4 +1,4 @@
-package com.jjep.rxe.model
+package com.jjep.rxe.model.post
 
 import android.arch.persistence.room.Entity
 import android.arch.persistence.room.PrimaryKey
@@ -8,6 +8,7 @@ import android.arch.persistence.room.PrimaryKey
  * @constructor Sets all properties of the post
  * @property userId the unique identifier of the author of the post
  * @property id the unique identifier of the post
+ * @property image the background image of the post
  * @property title the title of the post
  * @property body the content of the post
  */
@@ -16,6 +17,7 @@ data class Post(
     val userId: Int,
     @PrimaryKey(autoGenerate = true)
     val id: Int,
+    val image: String,
     val title: String,
     val body: String
 )

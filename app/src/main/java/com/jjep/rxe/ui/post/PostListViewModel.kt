@@ -4,9 +4,9 @@ import android.arch.lifecycle.MutableLiveData
 import android.view.View
 import com.jjep.rxe.R
 import com.jjep.rxe.base.BaseViewModel
-import com.jjep.rxe.model.Post
-import com.jjep.rxe.model.PostDao
-import com.jjep.rxe.network.PostApi
+import com.jjep.rxe.model.post.Post
+import com.jjep.rxe.model.post.PostDao
+import com.jjep.rxe.network.RxeApi
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -22,7 +22,7 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
     val postListAdapter: PostListAdapter = PostListAdapter()
 
     @Inject
-    lateinit var postApi: PostApi
+    lateinit var rxeApi: RxeApi
 
     init {
         loadPosts()
@@ -37,7 +37,7 @@ class PostListViewModel(private val postDao: PostDao) : BaseViewModel() {
         subscription = Observable.fromCallable { postDao.all }
             .concatMap { list ->
                 if (list.isEmpty())
-                    postApi.getAll().concatMap { list ->
+                    rxeApi.getAllPosts().concatMap { list ->
                         postDao.insert(*list.toTypedArray())
                         Observable.just(list)
                     }

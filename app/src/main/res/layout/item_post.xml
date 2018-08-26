@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="viewModel"
             type="com.jjep.rxe.ui.post.PostViewModel" />
@@ -12,27 +14,50 @@
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="16dp"
-        android:paddingRight="16dp">
+        android:layout_marginBottom="24dp"
+        android:minHeight="260dp"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/img_card_image"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mutableImage="@{viewModel.getImage()}" />
 
         <TextView
             android:id="@+id/post_title"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textStyle="bold"
-            app:mutableText="@{viewModel.getTitle()}"
+            android:layout_below="@+id/img_card_image"
+            android:layout_marginBottom="8dp"
+            android:background="#8FFF"
+            android:paddingEnd="8dp"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="@+id/img_card_image"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:mutableText="@{viewModel.getTitle()}"
+            tools:text="Lorem Ipsum" />
 
         <TextView
             android:id="@+id/post_body"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            app:mutableText="@{viewModel.getBody()}"
+            android:layout_below="@+id/post_title"
+            android:maxLines="3"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/post_title" />
+            app:layout_constraintTop_toBottomOf="@+id/img_card_image"
+            app:mutableText="@{viewModel.getBody()}"
+            tools:text="Lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem" />
     </android.support.constraint.ConstraintLayout>
 </layout>

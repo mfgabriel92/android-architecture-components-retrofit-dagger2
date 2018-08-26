@@ -1,6 +1,6 @@
 package com.jjep.rxe.injection.module
 
-import com.jjep.rxe.network.PostApi
+import com.jjep.rxe.network.RxeApi
 import com.jjep.rxe.util.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -17,7 +17,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 @Suppress("unused")
 object NetworkModule {
     /**
-     * Provides the Post service implementation.
+     * Provides the Rxe api implementation.
      *
      * @param retrofit the Retrofit object used to instantiate the service
      * @return the Post service implementation.
@@ -25,8 +25,8 @@ object NetworkModule {
     @Provides
     @Reusable
     @JvmStatic
-    internal fun providePostApi(retrofit: Retrofit): PostApi {
-        return retrofit.create(PostApi::class.java)
+    internal fun provideApi(retrofit: Retrofit): RxeApi {
+        return retrofit.create(RxeApi::class.java)
     }
 
     /**

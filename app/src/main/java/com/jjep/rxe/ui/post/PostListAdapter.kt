@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import com.jjep.rxe.R
 import com.jjep.rxe.databinding.ItemPostBinding
-import com.jjep.rxe.model.Post
+import com.jjep.rxe.model.post.Post
 
 class PostListAdapter : RecyclerView.Adapter<PostListAdapter.ViewHolder>() {
     private lateinit var posts: List<Post>
